@@ -1,8 +1,12 @@
 # parse-md
 
 Bounded, source-preserving Markdown parsing and safe typed HTML rendering.
-Python 3.14+, with no runtime dependencies. Version 0.1.0 is an unpublished
-candidate extracted from Pretty Notebook; see [provenance](PROVENANCE.md).
+Python 3.14+, with no runtime dependencies. Extracted from Pretty Notebook;
+see [provenance](PROVENANCE.md).
+
+```sh
+python -m pip install parse-md
+```
 
 ```python
 from parse_md import EXTENDED, RendererContext, parse, render
@@ -32,7 +36,7 @@ callbacks and extraction/adoption boundaries. Headless spreadsheet tables remain
 separate values; any adapter is optional. Terminal layout belongs to Escape
 Colors and HTML-tree processing to Astree.
 
-Development and candidate qualification:
+Development and distribution qualification:
 
 ```sh
 uv sync --locked
@@ -44,4 +48,4 @@ The implementation retains its MIT notices. The complete 652-example CommonMark
 0.31.2 fixture corpus retains its separate CC BY-SA 4.0 attribution in
 [tests/fixtures/markdown/NOTICE.md](tests/fixtures/markdown/NOTICE.md).
 `release.yaml` uses the `pypi` environment and verifies tag/version/main before
-publication; preparing or merging this candidate does not publish it.
+publication through Trusted Publishing.
