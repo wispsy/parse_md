@@ -11,7 +11,7 @@ from parse_md import (
 )
 
 
-CASES = json.loads((Path(__file__).parent / 'fixtures/markdown/commonmark-blocks.json').read_text())
+CASES = json.loads((Path(__file__).parent / 'fixtures/markdown/commonmark-blocks.json').read_text(encoding='utf-8'))
 
 
 def _tree_events(node, tight=False):

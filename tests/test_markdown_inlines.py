@@ -10,7 +10,7 @@ from parse_md import (
 )
 from parse_md.nodes import safe_url
 
-CASES = json.loads((Path(__file__).parent / 'fixtures/markdown/commonmark-inlines.json').read_text())
+CASES = json.loads((Path(__file__).parent / 'fixtures/markdown/commonmark-inlines.json').read_text(encoding='utf-8'))
 
 
 def _policy_urls(source, document):
@@ -75,7 +75,7 @@ def test_native_renderer_also_accepts_builder_nodes():
     assert Document(Paragraph(Text('<safe>'), Code('x < y'), Link('/safe', 'label'))).to_html(renderer=TypedRenderer()) == '<p>&lt;safe&gt;<code>x &lt; y</code><a href="/safe">label</a></p>'
 
 
-@pytest.mark.parametrize('case', json.loads((Path(__file__).parent / 'fixtures/markdown/commonmark-blocks.json').read_text()), ids=lambda c: f"block-render-{c['example']}")
+@pytest.mark.parametrize('case', json.loads((Path(__file__).parent / 'fixtures/markdown/commonmark-blocks.json').read_text(encoding='utf-8')), ids=lambda c: f"block-render-{c['example']}")
 def test_block_cases_with_native_inline_rendering(case):
     document = parse(case['markdown'])
     assert document.to_html(context=RendererContext(trust='trusted')) == _policy_urls(case['html'], document).removesuffix('\n')

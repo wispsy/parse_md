@@ -19,10 +19,10 @@ def test_public_exports_exist_and_imports_are_independent():
 
 def test_complete_attributed_corpus_is_preserved():
     directory = Path(__file__).parent/'fixtures/markdown'
-    cases = [item for name in ('commonmark-blocks.json','commonmark-inlines.json') for item in json.loads((directory/name).read_text())]
+    cases = [item for name in ('commonmark-blocks.json','commonmark-inlines.json') for item in json.loads((directory/name).read_text(encoding='utf-8'))]
     assert len(cases) == 652
     assert {item['example'] for item in cases} == set(range(1,653))
-    notice = (directory/'NOTICE.md').read_text()
+    notice = (directory/'NOTICE.md').read_text(encoding='utf-8')
     assert 'John MacFarlane' in notice and 'CC BY-SA 4.0' in notice
 
 

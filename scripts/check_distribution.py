@@ -146,7 +146,7 @@ def main() -> None:
     parser.add_argument('--output-dir', type=Path, default=Path('dist'))
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
-    config = tomllib.loads((root / 'pyproject.toml').read_text())
+    config = tomllib.loads((root / 'pyproject.toml').read_text(encoding='utf-8'))
     version = config['project']['version']
     require(not args.tag or args.tag == f'v{version}',
             'release tag must match the package version')
